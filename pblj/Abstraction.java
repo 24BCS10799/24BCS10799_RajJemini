@@ -1,25 +1,37 @@
-abstract class bankserver{
-    private static int bal=3000;
-    void getbalance()
-    {
-        System.out.println(bal);
-    }
-    void setbalance(int balance)
-    {
-        bal=balance;
-        System.out.println(bal);
+abstract class shape{
+    abstract double calculateArea();
+    void display(){
+        System.out.println("This is a shape");
     }
 }
-class sbi extends bank{
-    int debit(int amount){
-        int currentbalance =super.getbalance();
-        currentbalance=currentbalance-amount;
-        super.setbalance(currentbalance);
+class circle extends shape{
+    int r;
+    circle(int r){
+        this.r=r;
+    }
+    double calculateArea(){
+        double res=3.14*r*r;
+        return res;
     }
 }
-public class bank {
-    public static void main(String[] args){
-        sbi s=new sbi();
-        s.debit(1000);
+class rectangle extends shape{
+    int w;
+    int l;
+    rectangle(int l,int w){
+        this.l=l;
+        this.w=w;
+    }
+    double calculateArea(){
+        double res=2*(l+w);
+        return res;
+    }
+}
+public class question1 {
+    public static void main(String [] args){
+        shape objc=new circle(5);
+        shape objr=new rectangle(6,2);
+        objc.display();
+        System.out.println(objc.calculateArea());
+        System.out.println(objr.calculateArea());
     }
 }
